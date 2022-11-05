@@ -44,7 +44,7 @@ var attempt = async (rigged = false) => {
     print("Oh, chat is back!")
     sleep_mode = false
   }
-  let randVal = randi(1, 50)
+  let randVal = randi(1, 1000)
   if (randVal == 1 || rigged) {
     channel.send("THERE'S A BOMB STRAPPED TO MY CHEST")
     print("BOMBINGS")
@@ -64,7 +64,7 @@ var send = async (id, content) => {
 client.on('ready', () => {
   print(`${client.user.username}.`)
   attempt()
-  setInterval(attempt, 30000)
+  setInterval(attempt, 1000)
 })
 
 client.on('messageCreate', message => {
