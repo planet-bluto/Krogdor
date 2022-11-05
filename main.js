@@ -1,4 +1,6 @@
 const print = console.log
+require('dotenv').config({ path: `${__dirname}/.env` })
+const token = process.env['token']
 
 const randi = (min, max) => {
   min = Math.ceil(min);
@@ -24,4 +26,4 @@ client.on('ready', () => {
   setInterval(attempt, 30000)
 })
 
-client.login('MTAzODIzODM3MTIyODY4MDIyMg.G3WyDn.QmHG7_iGKcYmYHVIsHa0Sybs30vF_u1JBGlqxc');
+client.login(token);
