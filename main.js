@@ -31,7 +31,7 @@ var sleep_mode = false
 //
 // FUNCTIONS:
 // ***************************
-var attempt = async (rigged = false) => {
+var attempt = async (rigged = null) => {
   var channel = await client.channels.fetch(DEFAULT)
 
   // NO DEAD CHAT 💀
@@ -44,8 +44,13 @@ var attempt = async (rigged = false) => {
     print("Oh, chat is back!")
     sleep_mode = false
   }
+
   let randVal = randi(1, 1000)
-  if (randVal == 1 || rigged) {
+  let randVidVal = randi(1, 10000)
+  if (randVidVal == 5000 || (rigged == "video")) {
+    channel.send("https://cdn.discordapp.com/attachments/316978886087016449/1018542369051787405/305546109_128749789710011_3184430877394519973_n.mp4")
+    print("BOMBINGS (video)")
+  } else if (randVal == 500 || (rigged == "text")) {
     channel.send("THERE'S A BOMB STRAPPED TO MY CHEST")
     print("BOMBINGS")
   }
@@ -69,7 +74,7 @@ client.on('ready', () => {
 
 client.on('messageCreate', message => {
   if (message.channel == DEFAULT && message.mentions.users.has(client.user.id)) {
-    attempt(true)
+    attempt(randi(1, 10) == 1 ? "video" : "text")
   }
 })
 
@@ -79,7 +84,7 @@ process.stdin.on("data", data => {
   var cmd = args.shift()
   switch (cmd) {
     case 'bomb':
-      attempt(true)
+      attempt(args[0])
     break;
     case 'send':
       send(DEFAULT, args.join(" "))
