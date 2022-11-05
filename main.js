@@ -45,8 +45,8 @@ var attempt = async (rigged = null) => {
     sleep_mode = false
   }
 
-  let randVal = randi(1, 1000)
-  let randVidVal = randi(1, 10000)
+  let randVal = randi(1, 10000)
+  let randVidVal = randi(1, 50000)
   if (randVidVal == 5000 || (rigged == "video")) {
     channel.send("https://cdn.discordapp.com/attachments/316978886087016449/1018542369051787405/305546109_128749789710011_3184430877394519973_n.mp4")
     print("BOMBINGS (video)")
